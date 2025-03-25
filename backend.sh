@@ -46,9 +46,9 @@
  id expense &>>$LOG_FILE
  if [ $? -ne 0 ]
  then
-    echo -e "user expense does not exists...$G CREATING $N" &>>$LOG_FILE
+    echo -e "user expense does not exists...$G CREATING $N" 
     useradd expense &>>$LOG_FILE
     VALIDATE $? "creating expense user"
  else
-    echo -e "expense user already exists .. $Y skipping $N" &>>$LOG_FILE
+    echo -e "expense user already exists .. $Y skipping $N" 
  fi
