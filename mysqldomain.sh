@@ -44,6 +44,13 @@
  VALIDATE $? "Started MySQL server"
  
  mysql -h mysql.mydawsweb.online -u root -pExpenseApp@1 -e 'show databases;' &>>$LOG_FILE
- VALIDATE $? "setting up root password"
+ if [ $? -ne 0 ]
+ then
+    echo "MySQL root password is not setup, setting now"
+    mysql_secure_installation --set-root-pass ExpenseApp@1
+    VALIDATE $? "setting up root password"
+ else 
+    echo "MySQL root password is already setup...$Y SKIPPING $N"
+ fi
 
  
